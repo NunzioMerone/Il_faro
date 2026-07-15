@@ -7,7 +7,7 @@ window.IL_FARO_CONTENT = {
     subtitle: "International Baptist Church",
     phone: "+39 346 262 5811",
     logoImage: {
-      src: "assets/images/il-faro-logo-transparent.png",
+      src: "assets/images/il-faro-logo-red.png",
       alt: {
         it: "Logo Il Faro International Baptist Church",
         en: "Il Faro International Baptist Church logo"
