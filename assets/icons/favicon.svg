@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Il Faro">
+  <rect width="64" height="64" rx="14" fill="#070707"/>
+  <path d="M28 14h8l5 38H23l5-38Z" fill="#c40d2e"/>
+  <path d="M20 52h24l7 5H13l7-5Z" fill="#ffffff"/>
+  <path d="M24 14h16l-4-6h-8l-4 6Z" fill="#ffffff"/>
+  <path d="M39 24l15-5" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M25 26L10 21" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+</svg>
