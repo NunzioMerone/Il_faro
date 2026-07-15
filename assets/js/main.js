@@ -33,7 +33,7 @@ const SELECTORS = {
 };
 
 const STORAGE_KEY = "il-faro-language";
-const HERO_ROTATION_INTERVAL = 7500;
+const HERO_ROTATION_INTERVAL = 7000;
 const YOUTUBE_FETCH_TIMEOUT_MS = 4500;
 
 let currentLanguage = siteContent.defaultLanguage;
@@ -638,9 +638,7 @@ const normalizeYoutubeVideo = (item) => {
   return {
     title: item.title ?? "",
     publishedAt: normalizePublishedAt(item.pubDate ?? item.publishedAt),
-    videoId: extractYoutubeVideoId(url),
-    thumbnail:
-      item.thumbnail ?? item.enclosure?.thumbnail ?? "assets/images/community-worship-team.jpg"
+    videoId: extractYoutubeVideoId(url)
   };
 };
 
@@ -670,11 +668,9 @@ const renderVideoCard = (video, videos, lang) => {
       aria-label="${escapeHtml(`${videos.watchLabel}: ${video.title}`)}"
     >
       <span class="${C.videos.thumb}">
-        <img
-          src="${escapeHtml(video.thumbnail)}"
-          alt=""
-          loading="lazy"
-        />
+        <span class="${C.videos.brand}" aria-hidden="true">
+          <img src="${escapeHtml(siteContent.church.logoImage.src)}" alt="" decoding="async" />
+        </span>
         <span class="${C.videos.play}" aria-hidden="true"></span>
       </span>
       <span class="${C.videos.body}">
@@ -686,7 +682,6 @@ const renderVideoCard = (video, videos, lang) => {
             : ""
         }
         <strong>${escapeHtml(video.title)}</strong>
-        <span class="${C.videos.action}">${escapeHtml(videos.watchLabel)} <span aria-hidden="true">→</span></span>
       </span>
     </button>
   `;
@@ -817,24 +812,24 @@ const renderContact = (contact) => {
           <h2 id="${escapeHtml(contact.id)}-title">${escapeHtml(contact.title)}</h2>
           <p>${escapeHtml(contact.lede)}</p>
         </div>
+        <div class="${C.contact.mapShell}" data-reveal>
+          <div class="${C.contact.mapHeading}">
+            <h3>${escapeHtml(contact.mapTitle)}</h3>
+            <a href="${escapeHtml(church.address.mapUrl)}" target="_blank" rel="noreferrer">
+              ${escapeHtml(contact.mapFallback)}
+            </a>
+          </div>
+          <iframe
+            title="${escapeHtml(contact.mapTitle)}"
+            src="${escapeHtml(church.address.mapEmbedUrl)}"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
         <div class="${C.contact.panel}" data-reveal>
           ${renderContactLinks(contact.links)}
           ${renderSocialLinks(contact.socialsTitle)}
         </div>
-      </div>
-      <div class="${cx(C.section.inner, C.contact.mapShell)}" data-reveal>
-        <div class="${C.contact.mapHeading}">
-          <h3>${escapeHtml(contact.mapTitle)}</h3>
-          <a href="${escapeHtml(church.address.mapUrl)}" target="_blank" rel="noreferrer">
-            ${escapeHtml(contact.mapFallback)}
-          </a>
-        </div>
-        <iframe
-          title="${escapeHtml(contact.mapTitle)}"
-          src="${escapeHtml(church.address.mapEmbedUrl)}"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
       </div>
     </section>
   `;
